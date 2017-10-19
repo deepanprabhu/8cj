@@ -28,6 +28,7 @@ public class FILES {
         if (isEndOfFiles)
             return null;
 
+        currentFile().uc(1+currentFile().getc());
         return buffer.pollFirst();
     }
 
@@ -39,6 +40,8 @@ public class FILES {
         String newLine;
         if (buffer.size() == 0) {
             try {
+                currentFile().uc(0);
+                currentFile().ul(1+currentFile().getl());
                 newLine = currentFile().reader.readLine();
                 while (newLine == null && files.size() > 1) {
                     popTail();
@@ -49,6 +52,7 @@ public class FILES {
                     isEndOfFiles = true;
                 } else {
                     if (!newLine.trim().equals("")) {
+                        newLine = newLine.replaceAll("\\\n","");
                         for (char c : newLine.toCharArray()) {
                             buffer.add(new Character(c));
                         }
