@@ -25,7 +25,7 @@ public class FILES {
 
     public Character get() {
         fillLine();
-        if(isEndOfFiles)
+        if (isEndOfFiles)
             return null;
 
         return buffer.pollFirst();
@@ -48,12 +48,11 @@ public class FILES {
                 if (newLine == null) {
                     isEndOfFiles = true;
                 } else {
-                    if(!newLine.trim().equals("")) {
+                    if (!newLine.trim().equals("")) {
                         for (char c : newLine.toCharArray()) {
                             buffer.add(new Character(c));
                         }
-                    }
-                    else{
+                    } else {
                         buffer.add(new Character(' '));
                     }
                 }
