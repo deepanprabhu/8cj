@@ -1,4 +1,7 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.CharArrayReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class FILE {
     String name;
@@ -6,10 +9,8 @@ public class FILE {
     int column;
     int ntok;
     int last;
-    int buf[3];
-    int buflen;
 
-    BufferedReader reader;
+    public BufferedReader reader;
 
     public FILE() {
         this.line = 1;
@@ -26,5 +27,21 @@ public class FILE {
     }
     public void makeFileFromString(String contents){
         reader = new BufferedReader(new CharArrayReader(contents.toCharArray()));
+    }
+
+    public void ul(int l) {
+        this.line = l;
+    }
+
+    public void uc(int c) {
+        this.column = c;
+    }
+
+    public int getl() {
+        return this.line;
+    }
+
+    public int getc() {
+        return this.column;
     }
 }
