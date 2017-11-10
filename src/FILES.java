@@ -19,7 +19,7 @@ public class FILES {
         return null;
     }
 
-    private FILE currentFile() {
+    public FILE currentFile() {
         return files.getLast();
     }
 
@@ -40,13 +40,14 @@ public class FILES {
         String newLine;
         if (buffer.size() == 0) {
             try {
-                currentFile().uc(0);
-                currentFile().ul(1+currentFile().getl());
                 newLine = currentFile().reader.readLine();
                 while (newLine == null && files.size() > 1) {
                     popTail();
                     newLine = currentFile().reader.readLine();
                 }
+
+                currentFile().uc(0);
+                currentFile().ul(1+currentFile().getl());
 
                 if (newLine == null) {
                     isEndOfFiles = true;

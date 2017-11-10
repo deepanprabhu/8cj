@@ -44,4 +44,12 @@ public class FILE {
     public int getc() {
         return this.column;
     }
+
+    public void incTok(){
+        this.ntok++;
+    }
+
+    public int getTok(){
+        return this.ntok;
+    }
 }
